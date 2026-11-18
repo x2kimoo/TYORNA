@@ -1,0 +1,115 @@
+// Explain: Client-side app scripts including toast notifications and contact form handling.
+/* App: shared behaviors (nav, cart badge, toasts, contact form) */
+document.addEventListener('DOMContentLoaded', function () {
+
+    // Toast helper
+    window.showToast = function (message, isError) {
+        var host = document.getElementById('app-toast-host');
+        if (!host) {
+            host = document.createElement('div');
+            host.id = 'app-toast-host';
+            host.className = 'fixed bottom-5 inset-x-0 z-[100] flex flex-col items-center gap-2 px-4';
+            document.body.appendChild(host);
+        }
+        var toast = document.createElement('div');
+        toast.className = isError
+            ? 'rounded-full bg-red-600 px-5 py-2.5 text-sm font-bold text-white shadow-lg'
+            : 'rounded-full bg-[var(--primary-color)] px-5 py-2.5 text-sm font-bold text-white shadow-lg';
+        toast.textContent = message;
+        host.appendChild(toast);
+        window.setTimeout(function () {
+            if (toast.parentNode) { toast.parentNode.removeChild(toast); }
+        }, 3000);
+    };
+
+    // Cart badge on every page
+    window.updateCartBadge = function () {
+        if (!window.OrderSystem || typeof window.OrderSystem.getCart !== 'function') { return; }
+        window.OrderSystem.getCart().then(function (res) {
+            var count = 0;
+            if (res && res.success && Array.isArray(res.cart)) {
+                res.cart.forEach(function (p) { count += Number(p.count) || 0; });
+            }
+            var badges = document.querySelectorAll('[data-cart-count]');
+            Array.prototype.forEach.call(badges, function (el) {
+                el.textContent = String(count);
+                if (count > 0) { el.classList.remove('is-hidden'); }
+                else { el.classList.add('is-hidden'); }
+            });
+        }).catch(function () {});
+    };
+    window.updateCartBadge();
+
+    // Close the mobile menu after choosing a link
+    var mobileNav = document.querySelector('.mobile-nav');
+    if (mobileNav) {
+        Array.prototype.forEach.call(mobileNav.querySelectorAll('a'), function (link) {
+            link.addEventListener('click', function () {
+                if (document.activeElement && typeof document.activeElement.blur === 'function') {
+                    document.activeElement.blur();
+                }
+            });
+        });
+    }
+
+    // Footer year
+    Array.prototype.forEach.call(document.querySelectorAll('[data-year]'), function (el) {
+        el.textContent = String(new Date().getFullYear());
+    });
+
+    // Contact form
+    var contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var btn = contactForm.querySelector('button[type="submit"]');
+            var msg = document.getElementById('contact-msg');
+            var original = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i> جاري الإرسال...';
+            if (msg) {
+                msg.classList.add('hidden');
+                msg.classList.remove('bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
+            }
+            var nameEl = document.getElementById('contactName');
+            var phoneEl = document.getElementById('contactPhone');
+            var messageEl = document.getElementById('contactMessage');
+            window.MessagesSystem.submit([
+                { label: 'الاسم', value: nameEl ? nameEl.value : '', type: 'text' },
+                { label: 'رقم الهاتف', value: phoneEl ? phoneEl.value : '', type: 'tel' },
+                { label: 'الرسالة', value: messageEl ? messageEl.value : '', type: 'textarea' }
+            ], contactForm).then(function (res) {
+                btn.disabled = false;
+                btn.innerHTML = original;
+                if (!msg) { return; }
+                msg.classList.remove('hidden');
+                if (res && res.success) {
+                    msg.classList.add('bg-green-100', 'text-green-800');
+                    msg.textContent = 'تم إرسال رسالتك بنجاح، شكراً لتواصلك معنا!';
+                    contactForm.reset();
+                } else {
+                    msg.classList.add('bg-red-100', 'text-red-800');
+                    msg.textContent = (res && res.error) ? res.error : 'حدث خطأ، يرجى المحاولة مرة أخرى.';
+                }
+            }).catch(function () {
+                btn.disabled = false;
+                btn.innerHTML = original;
+                if (!msg) { return; }
+                msg.classList.remove('hidden');
+                msg.classList.add('bg-red-100', 'text-red-800');
+                msg.textContent = 'تعذر الإرسال بسبب مشكلة في الشبكة. حاول مرة أخرى.';
+            });
+        });
+    }
+
+    // One-time: apply the product photos uploaded in chat
+    try {
+        if (!window.localStorage.getItem('app_product_images_v1')) {
+            if (window.ServerFunction && typeof window.ServerFunction.call === 'function') {
+                window.ServerFunction.call('apply_product_images', {}).then(function () {
+                    window.localStorage.setItem('app_product_images_v1', '1');
+                }).catch(function () {});
+            }
+        }
+    } catch (errImages) {}
+});

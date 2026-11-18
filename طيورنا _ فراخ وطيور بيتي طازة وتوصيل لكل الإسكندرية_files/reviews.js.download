@@ -1,0 +1,120 @@
+// Explain: Interactive 5-star rating input and review submission logic.
+/* Reviews: interactive 5-star input + publish to the reviews table */
+document.addEventListener('DOMContentLoaded', function () {
+    var form = document.getElementById('review-form');
+    if (!form) { return; }
+
+    var starButtons = Array.prototype.slice.call(document.querySelectorAll('.star-btn'));
+    var ratingInput = document.getElementById('reviewRating');
+    var msg = document.getElementById('review-msg');
+    var grid = document.getElementById('reviews-grid');
+
+    function paintStars(value) {
+        starButtons.forEach(function (btn) {
+            var v = parseInt(btn.getAttribute('data-value'), 10);
+            var icon = btn.querySelector('i');
+            if (!icon) { return; }
+            icon.className = (v <= value) ? 'fa-solid fa-star' : 'fa-regular fa-star';
+        });
+    }
+
+    starButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var v = parseInt(btn.getAttribute('data-value'), 10) || 0;
+            if (ratingInput) { ratingInput.value = String(v); }
+            paintStars(v);
+        });
+    });
+
+    function showMsg(text, isError) {
+        if (!msg) { return; }
+        msg.classList.remove('is-hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
+        if (isError) { msg.classList.add('bg-red-100', 'text-red-800'); }
+        else { msg.classList.add('bg-green-100', 'text-green-800'); }
+        msg.textContent = text;
+    }
+
+    function buildCard(name, city, rating, text) {
+        var card = document.createElement('figure');
+        card.className = 'flex flex-col rounded-3xl bg-[var(--background-color)] p-6 shadow-sm ring-1 ring-[var(--border-color)] sm:rounded-[2.5rem] sm:p-7';
+
+        var starsWrap = document.createElement('div');
+        starsWrap.className = 'flex text-[var(--accent-color)]';
+        for (var i = 1; i <= 5; i++) {
+            var si = document.createElement('i');
+            si.className = (i <= rating) ? 'fa-solid fa-star' : 'fa-regular fa-star';
+            starsWrap.appendChild(si);
+        }
+
+        var quote = document.createElement('blockquote');
+        quote.className = 'mt-4 flex-1 leading-relaxed text-[var(--text-muted)]';
+        quote.textContent = text;
+
+        var cap = document.createElement('figcaption');
+        cap.className = 'mt-5';
+        var nameEl = document.createElement('div');
+        nameEl.className = 'font-bold text-[var(--text-color)]';
+        nameEl.style.fontFamily = 'var(--font-heading)';
+        nameEl.textContent = name;
+        cap.appendChild(nameEl);
+        if (city) {
+            var cityEl = document.createElement('div');
+            cityEl.className = 'text-sm text-[var(--text-muted)]';
+            cityEl.textContent = city;
+            cap.appendChild(cityEl);
+        }
+
+        card.appendChild(starsWrap);
+        card.appendChild(quote);
+        card.appendChild(cap);
+        return card;
+    }
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var rating = parseInt(ratingInput ? ratingInput.value : '0', 10) || 0;
+        var nameEl = document.getElementById('reviewName');
+        var cityEl = document.getElementById('reviewCity');
+        var textEl = document.getElementById('reviewText');
+        var nameVal = (nameEl ? nameEl.value : '').trim();
+        var cityVal = (cityEl ? cityEl.value : '').trim();
+        var textVal = (textEl ? textEl.value : '').trim();
+
+        if (rating < 1) { showMsg('يرجى اختيار عدد النجوم أولاً.', true); return; }
+        if (!nameVal) { showMsg('يرجى كتابة اسمك.', true); return; }
+        if (!textVal) { showMsg('يرجى كتابة تعليقك.', true); return; }
+
+        var btn = form.querySelector('button[type="submit"]');
+        var original = btn ? btn.innerHTML : '';
+        if (btn) {
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i> جاري الإرسال...';
+        }
+
+        var key = 'review-' + Date.now().toString(16) + Math.random().toString(16).slice(2, 8);
+
+        window.DataSystem.set('reviews', key, {
+            name: nameVal,
+            city: cityVal,
+            rating: rating,
+            text: textVal
+        }).then(function (res) {
+            if (btn) { btn.disabled = false; btn.innerHTML = original; }
+            if (!res || !res.success) {
+                showMsg('تعذر إرسال التقييم، حاول مرة أخرى.', true);
+                return;
+            }
+            if (grid) {
+                grid.insertBefore(buildCard(nameVal, cityVal, rating, textVal), grid.firstChild);
+            }
+            showMsg('شكراً لك! تم نشر تقييمك.', false);
+            form.reset();
+            if (ratingInput) { ratingInput.value = '0'; }
+            paintStars(0);
+        }).catch(function () {
+            if (btn) { btn.disabled = false; btn.innerHTML = original; }
+            showMsg('تعذر الإرسال بسبب مشكلة في الشبكة. حاول مرة أخرى.', true);
+        });
+    });
+});

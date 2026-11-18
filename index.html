@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طيورنا | فراخ وطيور بيتي طازة وتوصيل لكل الإسكندرية</title>
+    <meta name="description" content="طيورنا: فراخ بيضة وبلدي، أرانب، سمان، حمام، بط، بانيه، وراك، أجنحة، كبد وقوانص وشيش طازة بتربية بيتي ونضافة متميزة، توصيل لكل مناطق الإسكندرية.">
+    <meta name="keywords" content="فراخ طازة, فراخ بلدي, سمان, حمام, بط, بانيه, شيش, توصيل الإسكندرية">
+    <link rel="icon" href="https://files.cdn-files-a.com/uploads/12658616/100_6afb9955a96c4.jpg" type="image/jpeg">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        :root {
+            --background-color: #0b0f17;
+            --surface-color: #131a26;
+            --surface-soft: #1a2333;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary-color: #ffd166;
+            --secondary-color: #6ef0a2;
+            --accent-color: #ff7a2f;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --font-heading: 'Cairo', sans-serif;
+            --font-body: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+        }
+
+        .panel-soft {
+            background-color: rgba(19, 26, 38, 0.65);
+        }
+
+        .neon-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.6);
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .neon-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 209, 102, 0.45);
+            box-shadow: 0 16px 38px -12px rgba(255, 209, 102, 0.18);
+        }
+
+        .neon-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.45rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            background: rgba(255, 209, 102, 0.12);
+            color: var(--primary-color);
+            border: 1px solid rgba(255, 209, 102, 0.35);
+            box-shadow: 0 0 20px rgba(255, 209, 102, 0.15);
+        }
+
+        .neon-text {
+            text-shadow: 0 0 24px rgba(255, 209, 102, 0.45);
+        }
+
+        .btn-neon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.75rem;
+            border-radius: 9999px;
+            font-weight: 800;
+            background-color: var(--primary-color);
+            color: #0b0f17;
+            box-shadow: 0 0 22px rgba(255, 209, 102, 0.4);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn-neon:hover {
+            background-color: #ffe08a;
+            box-shadow: 0 0 30px rgba(255, 209, 102, 0.65);
+            transform: scale(1.02);
+        }
+
+        .btn-neon-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.75rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            background-color: rgba(255, 255, 255, 0.03);
+            color: var(--text-color);
+            border: 1px solid rgba(255, 209, 102, 0.45);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn-neon-outline:hover {
+            background-color: rgba(255, 209, 102, 0.12);
+            color: var(--primary-color);
+        }
+
+        .price-tag {
+            color: var(--secondary-color);
+            text-shadow: 0 0 14px rgba(110, 240, 162, 0.3);
+        }
+
+        .glow-bar {
+            box-shadow: 0 0 14px rgba(255, 209, 102, 0.6);
+        }
+
+        .glow-bar-accent {
+            box-shadow: 0 0 14px rgba(255, 122, 47, 0.6);
+        }
+
+        .logo-frame img {
+            height: 46px;
+            width: auto;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 209, 102, 0.35);
+        }
+
+        .logo-hero-frame {
+            border-radius: 2.5rem;
+            overflow: hidden;
+            border: 2px solid rgba(255, 209, 102, 0.35);
+            box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 209, 102, 0.2);
+        }
+
+        .logo-hero-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .field-input {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border-radius: 1rem;
+            background-color: var(--surface-soft);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .field-input:focus {
+            border-color: var(--primary-color);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 border-b border-[var(--border-color)] bg-[#0b0f17]/90 backdrop-blur-md">
+        <nav class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3" aria-label="القائمة الرئيسية">
+            <a href="#top" class="logo-frame flex items-center gap-3 shrink-0">
+                <img alt="شعار طيورنا" src="https://files.cdn-files-a.com/uploads/12658616/400_6afb9955a96c4.jpg">
+                <span class="text-xl font-extrabold text-[var(--primary-color)]">طيورنا</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden items-center gap-6 lg:flex">
+                <a href="#top" class="text-sm font-bold text-[var(--text-color)] transition-colors hover:text-[var(--primary-color)]">الرئيسية</a>
+                <a href="#gallery" class="text-sm font-bold text-[var(--text-color)] transition-colors hover:text-[var(--primary-color)]">الأقسام</a>
+                <a href="#menu" class="text-sm font-bold text-[var(--text-color)] transition-colors hover:text-[var(--primary-color)]">المنيو والأسعار</a>
+                <a href="#delivery" class="text-sm font-bold text-[var(--text-color)] transition-colors hover:text-[var(--primary-color)]">التوصيل</a>
+                <a href="#reviews" class="text-sm font-bold text-[var(--text-color)] transition-colors hover:text-[var(--primary-color)]">آراء العملاء</a>
+                <button type="button" onclick="toggleCartModal()" class="relative inline-flex cursor-pointer items-center text-lg text-[var(--text-color)] transition-colors hover:text-[var(--primary-color)]" aria-label="سلة التسوق">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-badge-desktop" class="hidden absolute -top-2 -end-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-[var(--accent-color)] px-1 text-[10px] font-bold text-white">0</span>
+                </button>
+                <a href="tel:+201214334611" class="btn-neon !py-2.5 !px-5 text-sm">
+                    <i class="fa-solid fa-phone"></i> <span dir="ltr">01214334611</span>
+                </a>
+            </div>
+
+            <!-- Mobile Controls -->
+            <div class="flex items-center gap-3 lg:hidden">
+                <button type="button" onclick="toggleCartModal()" class="relative inline-flex cursor-pointer items-center p-2 text-xl text-[var(--text-color)]" aria-label="سلة التسوق">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-badge-mobile" class="hidden absolute top-0 end-0 flex h-5 min-w-5 items-center justify-center rounded-full bg-[var(--accent-color)] px-1 text-[10px] font-bold text-white">0</span>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="p-2 text-xl text-[var(--text-color)]" aria-label="فتح القائمة">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden border-t border-[var(--border-color)] bg-[var(--surface-color)] px-4 py-4 lg:hidden">
+            <ul class="space-y-3 text-sm font-bold">
+                <li><a href="#top" onclick="toggleMobileMenu()" class="block py-1 hover:text-[var(--primary-color)]">الرئيسية</a></li>
+                <li><a href="#gallery" onclick="toggleMobileMenu()" class="block py-1 hover:text-[var(--primary-color)]">الأقسام</a></li>
+                <li><a href="#menu" onclick="toggleMobileMenu()" class="block py-1 hover:text-[var(--primary-color)]">المنيو والأسعار</a></li>
+                <li><a href="#delivery" onclick="toggleMobileMenu()" class="block py-1 hover:text-[var(--primary-color)]">التوصيل</a></li>
+                <li><a href="#reviews" onclick="toggleMobileMenu()" class="block py-1 hover:text-[var(--primary-color)]">آراء العملاء</a></li>
+                <li><a href="tel:+201214334611" class="block py-1 text-[var(--primary-color)]"><i class="fa-solid fa-phone me-2"></i> 01214334611</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main id="top">
+        <!-- Hero Section -->
+        <section class="relative overflow-hidden py-12 md:py-20">
+            <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 md:grid-cols-2 md:gap-14">
+                <div class="text-center md:text-start">
+                    <span class="neon-chip"><i class="fa-solid fa-bolt"></i> طازة يومياً • من 7 الصبح لـ 6 المغرب</span>
+                    <h1 class="mt-5 text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl">
+                        <span class="neon-text text-[var(--primary-color)]">طيورنا</span>
+                        <span class="block mt-2 text-2xl md:text-3xl lg:text-4xl">فراخ وطيور بيتي.. نضافة وتوصيل لكل الإسكندرية</span>
+                    </h1>
+                    <p class="mt-5 text-base leading-relaxed text-[var(--text-muted)] sm:text-lg">
+                        فراخ بيضة وبلدي، أرانب، سمان، حمام، بط، بانيه، وراك، أجنحة، كبد وقوانص، شاورما وشيش — كله بيتنضف ويتجهز يوم الطلب بتربية بيتي ونضافة متميزة. بنوصل لكل حتة في الإسكندرية: سموحة، جليم، بلازا وأي منطقة تانية.
+                    </p>
+                    <div class="mt-6 inline-flex items-center gap-2 rounded-2xl border border-[var(--border-color)] bg-[var(--surface-color)] px-4 py-3 text-sm font-bold text-[var(--accent-color)]">
+                        <i class="fa-solid fa-arrows-rotate"></i> الأسعار حسب البورصة اليومية
+                    </div>
+                    <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center md:justify-start">
+                        <a href="#menu" class="btn-neon w-full sm:w-auto"><i class="fa-solid fa-cart-shopping"></i> اطلب دلوقتي</a>
+                        <a href="tel:+201214334611" class="btn-neon-outline w-full sm:w-auto">
+                            <i class="fa-solid fa-phone"></i> <span dir="ltr">01214334611</span>
+                        </a>
+                    </div>
+                    <div class="mt-9 grid w-full grid-cols-3 gap-3">
+                        <div class="neon-card rounded-2xl p-3 text-center sm:p-4">
+                            <div class="price-tag text-lg font-bold sm:text-xl">7ص - 6م</div>
+                            <div class="mt-1 text-[11px] font-semibold text-[var(--text-muted)] sm:text-xs">مواعيد العمل</div>
+                        </div>
+                        <div class="neon-card rounded-2xl p-3 text-center sm:p-4">
+                            <div class="text-lg font-bold text-[var(--primary-color)] sm:text-xl">كل الإسكندرية</div>
+                            <div class="mt-1 text-[11px] font-semibold text-[var(--text-muted)] sm:text-xs">منطقة التوصيل</div>
+                        </div>
+                        <div class="neon-card rounded-2xl p-3 text-center sm:p-4">
+                            <div class="text-lg font-bold text-[var(--secondary-color)] sm:text-xl">100% بيتي</div>
+                            <div class="mt-1 text-[11px] font-semibold text-[var(--text-muted)] sm:text-xs">تربية ونضافة</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative mx-auto w-full max-w-md">
+                    <div class="logo-hero-frame relative z-10">
+                        <img alt="طيورنا - فراخ وطيور بيتي" src="https://files.cdn-files-a.com/uploads/12658616/800_6afb9955a96c4.jpg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories / Gallery Section -->
+        <section id="gallery" class="py-16">
+            <div class="mx-auto max-w-6xl px-4">
+                <div class="mx-auto max-w-2xl text-center">
+                    <span class="neon-chip"><i class="fa-solid fa-camera"></i> صور من عندنا</span>
+                    <h2 class="mt-5 text-3xl font-bold md:text-4xl">منتجاتنا الطازة</h2>
+                    <div class="mx-auto mt-4 h-1 w-20 rounded-full bg-[var(--primary-color)] glow-bar"></div>
+                    <p class="mt-5 text-lg text-[var(--text-muted)]">كل صنف بيتنضف ويتجهز يوم الطلب — تربية بيتي ونضافة متميزة.</p>
+                </div>
+
+                <div class="mt-12 grid gap-6 lg:grid-cols-3">
+                    <div class="neon-card flex flex-col overflow-hidden rounded-[2rem]">
+                        <div class="aspect-video w-full overflow-hidden bg-[var(--surface-soft)]">
+                            <img alt="طيور كاملة" class="h-full w-full object-cover" src="https://files.cdn-files-a.com/uploads/12658616/800_6afb9d08abccf.png" loading="lazy">
+                        </div>
+                        <div class="flex flex-1 flex-col p-6">
+                            <div class="flex items-center gap-3">
+                                <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--primary-color)]/15 text-[var(--primary-color)]">
+                                    <i class="fa-solid fa-drumstick-bite text-xl"></i>
+                                </div>
+                                <h3 class="text-lg font-bold">طيور كاملة</h3>
+                            </div>
+                            <p class="mt-4 flex-1 text-sm leading-relaxed text-[var(--text-muted)]">فراخ بيضاء، فراخ بلدي، أرانب، سمان، حمام، بط — كاملة ومنظفة وجاهزة للتقطيع أو الطهي على طول.</p>
+                            <a href="#menu" onclick="filterMenu('طيور كاملة')" class="btn-neon mt-5 w-full text-sm">تصفح القسم <i class="fa-solid fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="neon-card flex flex-col overflow-hidden rounded-[2rem]">
+                        <div class="aspect-video w-full overflow-hidden bg-[var(--surface-soft)]">
+                            <img alt="مقطعات ومصنعات طازجة" class="h-full w-full object-cover" src="https://files.cdn-files-a.com/uploads/12658616/800_6afb9d0916fb4.png" loading="lazy">
+                        </div>
+                        <div class="flex flex-1 flex-col p-6">
+                            <div class="flex items-center gap-3">
+                                <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--primary-color)]/15 text-[var(--primary-color)]">
+                                    <i class="fa-solid fa-utensils text-xl"></i>
+                                </div>
+                                <h3 class="text-lg font-bold">مقطعات ومصنعات طازجة</h3>
+                            </div>
+                            <p class="mt-4 flex-1 text-sm leading-relaxed text-[var(--text-muted)]">بانيه، أوراك، أجنحة، كبد وقوانص — متقطعة ومغلفة وجاهزة للشوي أو التحمير.</p>
+                            <a href="#menu" onclick="filterMenu('مقطعات')" class="btn-neon mt-5 w-full text-sm">تصفح القسم <i class="fa-solid fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="neon-card flex flex-col overflow-hidden rounded-[2rem]">
+                        <div class="aspect-video w-full overflow-hidden bg-[var(--surface-soft)]">
+                            <img alt="أصناف خاصة ومتبلة" class="h-full w-full object-cover" src="https://files.cdn-files-a.com/uploads/12658616/800_6afb9d09b4fa4.png" loading="lazy">
+                        </div>
+                        <div class="flex flex-1 flex-col p-6">
+                            <div class="flex items-center gap-3">
+                                <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--primary-color)]/15 text-[var(--primary-color)]">
+                                    <i class="fa-solid fa-pepper-hot text-xl"></i>
+                                </div>
+                                <h3 class="text-lg font-bold">أصناف خاصة ومتبلة</h3>
+                            </div>
+                            <p class="mt-4 flex-1 text-sm leading-relaxed text-[var(--text-muted)]">شاورما بانيه، شيش أوراك، شيش بانيه، فراخ منديل، أوراك حمام كداب، صدور بالعظم — بتتبيلاتنا الجاهزة.</p>
+                            <a href="#menu" onclick="filterMenu('متبل وخاص')" class="btn-neon mt-5 w-full text-sm">تصفح القسم <i class="fa-solid fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Full Menu Section with Interactive Filter & Cart -->
+        <section id="menu" class="panel-soft py-16">
+            <div class="mx-auto max-w-6xl px-4">
+                <div class="mx-auto max-w-2xl text-center">
+                    <h2 class="text-3xl font-bold md:text-4xl">المنيو كامل</h2>
+                    <div class="mx-auto mt-4 h-1 w-20 rounded-full bg-[var(--primary-color)] glow-bar"></div>
+                    <p class="mt-5 text-lg text-[var(--text-muted)]">اختر الأصناف وأضفها للسلة لإرسال طلبك مباشرة عبر واتساب.</p>
+                    <p class="mt-4 inline-flex items-center gap-2 rounded-full bg-[var(--surface-soft)] px-4 py-2 text-xs font-bold text-[var(--accent-color)]">
+                        <i class="fa-solid fa-arrows-rotate"></i> الأسعار حسب البورصة اليومية — الأرقام استرشادية للكيلو
+                    </p>
+                </div>
+
+                <!-- Category Filter Buttons -->
+                <div id="filter-buttons" class="mt-8 flex flex-wrap justify-center gap-2">
+                    <button type="button" onclick="filterMenu('الكل')" class="filter-btn active rounded-full bg-[var(--primary-color)] px-5 py-2 text-sm font-bold text-[#0b0f17] transition">الكل</button>
+                    <button type="button" onclick="filterMenu('طيور كاملة')" class="filter-btn rounded-full bg-[var(--surface-soft)] px-5 py-2 text-sm font-bold text-[var(--text-color)] hover:bg-[var(--primary-color)]/20 transition">طيور كاملة</button>
+                    <button type="button" onclick="filterMenu('مقطعات')" class="filter-btn rounded-full bg-[var(--surface-soft)] px-5 py-2 text-sm font-bold text-[var(--text-color)] hover:bg-[var(--primary-color)]/20 transition">مقطعات</button>
+                    <button type="button" onclick="filterMenu('متبل وخاص')" class="filter-btn rounded-full bg-[var(--surface-soft)] px-5 py-2 text-sm font-bold text-[var(--text-color)] hover:bg-[var(--primary-color)]/20 transition">متبل وخاص</button>
+                </div>
+
+                <!-- Products Grid (Rendered dynamically via JS) -->
+                <div id="products-grid" class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+
+                <p class="mt-10 text-center text-sm text-[var(--text-muted)]">
+                    محتاج حاجة مش في المنيو؟
+                    <a href="https://wa.me/201214334611" target="_blank" rel="noopener" class="font-bold text-[var(--secondary-color)] hover:underline">كلمنا واتساب على 01214334611</a>
+                    وهنجهزها لك.
+                </p>
+            </div>
+        </section>
+
+        <!-- Delivery Section -->
+        <section id="delivery" class="py-16">
+            <div class="mx-auto max-w-6xl px-4">
+                <div class="mx-auto max-w-2xl text-center">
+                    <h2 class="text-3xl font-bold md:text-4xl">التوصيل ومواعيد العمل</h2>
+                    <div class="mx-auto mt-4 h-1 w-20 rounded-full bg-[var(--secondary-color)] shadow-[0_0_14px_rgba(110,240,162,0.55)]"></div>
+                    <p class="mt-5 text-lg text-[var(--text-muted)]">بنوصّل لكل حتة في الإسكندرية — سموحة، جليم، سان ستيفانو، بلازا، وأي منطقة تانية. الدفع كاش عند الاستلام.</p>
+                </div>
+
+                <div class="mt-12 grid gap-6 md:grid-cols-3">
+                    <div class="neon-card flex flex-col items-center rounded-[2rem] p-7 text-center">
+                        <div class="flex h-16 w-16 items-center justify-center rounded-full bg-[var(--secondary-color)]/15 text-[var(--secondary-color)]">
+                            <i class="fa-solid fa-location-dot text-2xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg font-bold">مناطق قريبة</h3>
+                        <p class="price-tag mt-3 text-2xl font-bold">من 20 لـ 25 جنيه</p>
+                        <p class="mt-2 text-sm leading-relaxed text-[var(--text-muted)]">سموحة، جليم، بلازا والمناطق المجاورة.</p>
+                    </div>
+                    <div class="neon-card flex flex-col items-center rounded-[2rem] p-7 text-center">
+                        <div class="flex h-16 w-16 items-center justify-center rounded-full bg-[var(--secondary-color)]/15 text-[var(--secondary-color)]">
+                            <i class="fa-solid fa-truck-fast text-2xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg font-bold">مناطق بعيدة</h3>
+                        <p class="price-tag mt-3 text-2xl font-bold">35 جنيه</p>
+                        <p class="mt-2 text-sm leading-relaxed text-[var(--text-muted)]">المناطق الأبعد شوية داخل الإسكندرية.</p>
+                    </div>
+                    <div class="neon-card flex flex-col items-center rounded-[2rem] p-7 text-center">
+                        <div class="flex h-16 w-16 items-center justify-center rounded-full bg-[var(--secondary-color)]/15 text-[var(--secondary-color)]">
+                            <i class="fa-solid fa-map-location-dot text-2xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg font-bold">مناطق بعيدة جداً</h3>
+                        <p class="price-tag mt-3 text-2xl font-bold">45 جنيه</p>
+                        <p class="mt-2 text-sm leading-relaxed text-[var(--text-muted)]">أطراف الإسكندرية والمناطق الأقصى.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Us Section -->
+        <section id="why" class="py-16">
+            <div class="mx-auto max-w-6xl px-4">
+                <div class="mx-auto max-w-2xl text-center">
+                    <h2 class="text-3xl font-bold md:text-4xl">ليه طيورنا؟</h2>
+                    <div class="mx-auto mt-4 h-1 w-20 rounded-full bg-[var(--secondary-color)] shadow-[0_0_14px_rgba(110,240,162,0.55)]"></div>
+                </div>
+
+                <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <div class="neon-card flex flex-col items-center rounded-[2rem] p-7 text-center">
+                        <div class="flex h-16 w-16 items-center justify-center rounded-full bg-[var(--accent-color)]/15 text-[var(--accent-color)]">
+                            <i class="fa-solid fa-spray-can-sparkles text-2xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg font-bold">نضافة متميزة</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-[var(--text-muted)]">تنظيف وتعقيم لكل مرحلة، وبنعرض عليك التقطيع اللي تحبه.</p>
+                    </div>
+                    <div class="neon-card flex flex-col items-center rounded-[2rem] p-7 text-center">
+                        <div class="flex h-16 w-16 items-center justify-center rounded-full bg-[var(--accent-color)]/15 text-[var(--accent-color)]">
+                            <i class="fa-solid fa-house-chimney text-2xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg font-bold">تربية بيتي</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-[var(--text-muted)]">فراخ مسمّنة بتربية بيتي بطعم أصلي وبدون استعجال.</p>
+                    </div>
+                    <div class="neon-card flex flex-col items-center rounded-[2rem] p-7 text-center">
+                        <div class="flex h-16 w-16 items-center justify-center rounded-full bg-[var(--accent-color)]/15 text-[var(--accent-color)]">
+                            <i class="fa-solid fa-hand-holding-heart text-2xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg font-bold">لو معجبكش الأكل</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-[var(--text-muted)]">متطلبش تاني. راحتنا في إن الطعم يكون على مزاجك.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section id="reviews" class="panel-soft py-16">
+            <div class="mx-auto max-w-6xl px-4">
+                <div class="mx-auto max-w-2xl text-center">
+                    <h2 class="text-2xl font-bold sm:text-3xl md:text-4xl">آراء عملائنا في الإسكندرية</h2>
+                    <div class="mx-auto mt-4 h-1 w-20 rounded-full bg-[var(--accent-color)] glow-bar-accent"></div>
+                    <p class="mt-5 text-base text-[var(--text-muted)] sm:text-lg">عملاء من سموحة وسيدي جابر والعجمي وغيرها بيطلبوا مننا كل أسبوع.</p>
+                </div>
+
+                <div id="reviews-grid" class="mt-12 grid gap-6 md:grid-cols-3">
+                    <figure class="neon-card flex flex-col rounded-[2rem] p-6 sm:p-7">
+                        <div class="flex text-[var(--accent-color)]">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <blockquote class="mt-4 flex-1 leading-relaxed text-[var(--text-muted)]">الفراخ وصلت طازة جداً ونظيفة، والتقطيع كان مضبوط زي ما طلبت. تجربة رائعة وهطلب تاني.</blockquote>
+                        <figcaption class="mt-5">
+                            <div class="font-bold">منى عبد الله</div>
+                            <div class="text-sm text-[var(--text-muted)]">سموحة</div>
+                        </figcaption>
+                    </figure>
+                    <figure class="neon-card flex flex-col rounded-[2rem] p-6 sm:p-7">
+                        <div class="flex text-[var(--accent-color)]">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <blockquote class="mt-4 flex-1 leading-relaxed text-[var(--text-muted)]">أسرع توصيل جربته، والفراخ المتبلة جاهزة للشوي ومضبوطة التتبيلة. شكراً طيورنا.</blockquote>
+                        <figcaption class="mt-5">
+                            <div class="font-bold">أحمد سيد</div>
+                            <div class="text-sm text-[var(--text-muted)]">سيدي جابر</div>
+                        </figcaption>
+                    </figure>
+                    <figure class="neon-card flex flex-col rounded-[2rem] p-6 sm:p-7">
+                        <div class="flex text-[var(--accent-color)]">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                        </div>
+                        <blockquote class="mt-4 flex-1 leading-relaxed text-[var(--text-muted)]">بحب إن كل حاجة مبردة ومتغلفة كويس. جودة تستاهل السعر وبقالي فترة بطلب منهم.</blockquote>
+                        <figcaption class="mt-5">
+                            <div class="font-bold">هبة مصطفى</div>
+                            <div class="text-sm text-[var(--text-muted)]">العجمي</div>
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <!-- Add Review Form -->
+                <div class="mx-auto mt-12 max-w-2xl rounded-[2rem] border border-[var(--border-color)] bg-[var(--surface-color)] p-6 sm:p-8">
+                    <h3 class="text-xl font-bold sm:text-2xl">شاركنا رأيك</h3>
+                    <p class="mt-2 text-sm text-[var(--text-muted)]">قيّم تجربتك بالنجوم وساعد غيرك في الاختيار.</p>
+
+                    <form id="review-form" class="mt-6 space-y-4">
+                        <div>
+                            <span class="mb-2 block text-sm font-semibold">تقييمك</span>
+                            <div id="review-stars" class="flex items-center gap-1 text-2xl text-[var(--accent-color)]">
+                                <button type="button" class="star-btn p-1" data-value="1"><i class="fa-solid fa-star"></i></button>
+                                <button type="button" class="star-btn p-1" data-value="2"><i class="fa-solid fa-star"></i></button>
+                                <button type="button" class="star-btn p-1" data-value="3"><i class="fa-solid fa-star"></i></button>
+                                <button type="button" class="star-btn p-1" data-value="4"><i class="fa-solid fa-star"></i></button>
+                                <button type="button" class="star-btn p-1" data-value="5"><i class="fa-solid fa-star"></i></button>
+                            </div>
+                            <input type="hidden" id="reviewRating" value="5">
+                        </div>
+                        <div>
+                            <label for="reviewName" class="mb-2 block text-sm font-semibold">الاسم</label>
+                            <input type="text" id="reviewName" class="field-input" placeholder="اكتب اسمك" required>
+                        </div>
+                        <div>
+                            <label for="reviewCity" class="mb-2 block text-sm font-semibold">المنطقة في إسكندرية</label>
+                            <input type="text" id="reviewCity" class="field-input" placeholder="مثال: سموحة، جليم، بلازا" required>
+                        </div>
+                        <div>
+                            <label for="reviewText" class="mb-2 block text-sm font-semibold">تعليقك</label>
+                            <textarea id="reviewText" rows="3" class="field-input" placeholder="شاركنا تجربتك مع طيورنا" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-neon w-full">
+                            <i class="fa-solid fa-paper-plane"></i> إرسال التقييم
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call To Action -->
+        <section class="py-16">
+            <div class="mx-auto max-w-6xl px-4">
+                <div class="overflow-hidden rounded-[2.5rem] border border-[var(--primary-color)]/40 bg-[linear-gradient(135deg,rgba(255,209,102,0.18),rgba(255,122,47,0.14),rgba(110,240,162,0.16))] px-6 py-12 text-center shadow-[0_0_45px_-12px_rgba(255,209,102,0.5)] md:px-16">
+                    <span class="neon-chip"><i class="fa-solid fa-clock"></i> بنستقبل الطلبات من 7 الصبح لـ 6 المغرب</span>
+                    <h2 class="mt-5 text-3xl font-bold md:text-4xl">جاهز تطلب فراخ طازة النهاردة؟</h2>
+                    <p class="mx-auto mt-4 max-w-2xl text-lg text-[var(--text-muted)]">اطلب من المنيو، أو كلمنا على الرقم وهنوصلك لكل حتة في الإسكندرية. الدفع كاش عند الاستلام.</p>
+                    <div class="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+                        <a href="#menu" class="btn-neon">اطلب الآن <i class="fa-solid fa-arrow-left"></i></a>
+                        <a href="tel:+201214334611" class="btn-neon-outline"><i class="fa-solid fa-phone"></i> <span dir="ltr">01214334611</span></a>
+                        <a href="https://wa.me/201214334611" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-full border border-[var(--secondary-color)]/50 bg-[var(--secondary-color)]/10 px-7 py-4 text-base font-bold text-[var(--secondary-color)] transition-colors hover:bg-[var(--secondary-color)]/20">
+                            <i class="fa-brands fa-whatsapp"></i> واتساب
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-10 border-t border-[var(--border-color)] panel-soft">
+        <div class="mx-auto max-w-6xl px-4 py-12">
+            <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <div>
+                    <a href="#top" class="logo-frame flex items-center gap-3">
+                        <img alt="شعار طيورنا" src="https://files.cdn-files-a.com/uploads/12658616/400_6afb9955a96c4.jpg">
+                        <span class="text-xl font-extrabold text-[var(--primary-color)]">طيورنا</span>
+                    </a>
+                    <p class="mt-4 text-sm leading-relaxed text-[var(--text-muted)]">فراخ وطيور بيتي بتتجهز يوم الطلب، نضافة متميزة، وتوصيل لكل حتة في الإسكندرية. الأسعار حسب البورصة اليومية.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold">روابط سريعة</h4>
+                    <ul class="mt-4 space-y-2 text-sm">
+                        <li><a href="#top" class="text-[var(--text-muted)] hover:text-[var(--primary-color)]">الرئيسية</a></li>
+                        <li><a href="#menu" class="text-[var(--text-muted)] hover:text-[var(--primary-color)]">المنيو والأسعار</a></li>
+                        <li><a href="#delivery" class="text-[var(--text-muted)] hover:text-[var(--primary-color)]">التوصيل والمواعيد</a></li>
+                        <li><a href="#reviews" class="text-[var(--text-muted)] hover:text-[var(--primary-color)]">آراء العملاء</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold">اطلب مننا</h4>
+                    <ul class="mt-4 space-y-3 text-sm">
+                        <li><a href="tel:+201214334611" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--primary-color)]"><i class="fa-solid fa-phone text-[var(--primary-color)]"></i> <span dir="ltr">01214334611</span></a></li>
+                        <li><a href="https://wa.me/201214334611" target="_blank" rel="noopener" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--secondary-color)]"><i class="fa-brands fa-whatsapp text-[var(--secondary-color)]"></i> واتساب مباشر</a></li>
+                        <li class="flex items-start gap-2 text-[var(--text-muted)]"><i class="fa-solid fa-location-dot mt-1 text-[var(--accent-color)]"></i> الإسكندرية: سموحة، جليم، بلازا، وكل المناطق</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-10 border-t border-[var(--border-color)] pt-6 text-center text-sm text-[var(--text-muted)]">
+                © 2026 طيورنا — لو معجبكش الأكل، متطلبش تاني.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Cart Button -->
+    <button type="button" onclick="toggleCartModal()" id="floating-cart-btn" class="hidden fixed bottom-6 left-6 z-40 flex items-center gap-3 rounded-full bg-[var(--primary-color)] px-5 py-3.5 font-extrabold text-[#0b0f17] shadow-[0_10px_30px_rgba(255,209,102,0.5)] transition hover:scale-105">
+        <i class="fa-solid fa-cart-shopping text-lg"></i>
+        <span>السلة (<span id="floating-cart-count">0</span>)</span>
+    </button>
+
+    <!-- Interactive Cart Modal -->
+    <div id="cart-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm">
+        <div class="relative flex max-h-[90vh] w-full max-w-lg flex-col rounded-[2rem] border border-[var(--border-color)] bg-[var(--surface-color)] p-6 shadow-2xl">
+            <div class="flex items-center justify-between border-b border-[var(--border-color)] pb-4">
+                <h3 class="text-xl font-extrabold text-[var(--primary-color)]"><i class="fa-solid fa-cart-shopping me-2"></i> سلة الطلبات</h3>
+                <button type="button" onclick="toggleCartModal()" class="text-2xl text-[var(--text-muted)] hover:text-white">&times;</button>
+            </div>
+
+            <div id="cart-items-container" class="my-4 flex-1 space-y-3 overflow-y-auto pr-1">
+                <!-- Cart items injected here -->
+            </div>
+
+            <div class="border-t border-[var(--border-color)] pt-4">
+                <div class="mb-4 flex items-center justify-between text-lg font-bold">
+                    <span>الإجمالي الاسترشادي:</span>
+                    <span id="cart-total-price" class="price-tag">0 ج.م</span>
+                </div>
+                <div class="space-y-3">
+                    <input type="text" id="customer-name" class="field-input !py-2.5 text-sm" placeholder="الاسم بالكامل">
+                    <input type="text" id="customer-address" class="field-input !py-2.5 text-sm" placeholder="العنوان في الإسكندرية (مثال: سموحة شارع فوزي معاذ)">
+                    <button type="button" onclick="sendOrderToWhatsApp()" class="btn-neon w-full !bg-[#25D366] !text-white !shadow-[0_0_20px_rgba(37,211,102,0.4)]">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> إرسال الطلب عبر واتساب
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="pointer-events-none fixed bottom-6 right-6 z-50 translate-y-20 rounded-2xl border border-[var(--secondary-color)]/50 bg-[var(--surface-color)] px-5 py-3 text-sm font-bold text-[var(--secondary-color)] opacity-0 shadow-xl transition-all duration-300">
+        <i class="fa-solid fa-circle-check me-2"></i> <span id="toast-msg">تمت الإضافة للسلة</span>
+    </div>
+
+    <script>
+        // Product Catalog Data
+        const products = [
+            { id: 1, name: "بانيه", category: "مقطعات", badge: "بانيه وشيش", price: 200, desc: "بانيه فراخ مخلي وجاهز للتحمير أو الشوي.", img: "https://files.cdn-files-a.com/uploads/12658616/800_6afba5b91e6cd.jpg" },
+            { id: 2, name: "صدور فراخ بدون عظم", category: "مقطعات", badge: "صدور وفيليه", price: 155, desc: "صدور مخلية بدون عظم، نظيفة وجاهزة للتتبيل والشوي أو البانيه.", img: "https://static.s123-cdn-static-d.com/ready_uploads/media/9067179/800_6385e75ccfdf0.jpg" },
+            { id: 3, name: "فرخة كاملة طازجة", category: "طيور كاملة", badge: "فراخ كاملة طازجة", price: 95, desc: "فرخة كاملة طازجة منظفة ومجهزة، مناسبة للشوي والتحمير والسلق.", img: "https://files.cdn-files-a.com/admin/system_photos_stock/800_697a31375d2ae.jpg" },
+            { id: 4, name: "شيش بانيه", category: "متبل وخاص", badge: "بانيه وشيش", price: 205, desc: "شيش بانيه متبل وجاهز للشوي على طول.", img: "https://files.cdn-files-a.com/uploads/12658616/800_6afba5b66b34f.jpg" },
+            { id: 5, name: "فراخ بلدي", category: "طيور كاملة", badge: "فراخ كاملة طازجة", price: 140, desc: "تربية بيتي بطعم الفراخ البلدي الأصلي ونضافة متميزة.", img: "https://files.cdn-files-a.com/uploads/12658616/800_6afba5ba44db8.jpg" },
+            { id: 6, name: "سمان", category: "طيور كاملة", badge: "دواجن أخرى", price: 160, desc: "سمان طازة جاهز للشوي أو التحمير.", img: "https://files.cdn-files-a.com/uploads/12658616/800_6afba5b9d3fbe.jpg" },
+            { id: 7, name: "شيش وراك", category: "متبل وخاص", badge: "بانيه وشيش", price: 165, desc: "مكعبات وراك متبلة على الطريقة الشرقية وجاهزة للشوي.", img: "https://files.cdn-files-a.com/uploads/12658616/800_6afba5b603deb.jpg" },
+            { id: 8, name: "صدور بالعضم", category: "مقطعات", badge: "فراخ كاملة طازجة", price: 150, desc: "صدور بالعضم طازة بطعم مميز ومناسبة للشوي.", img: "https://files.cdn-files-a.com/uploads/12658616/800_6afba5b53526d.jpg" },
+            { id: 9, name: "فراخ بانيه متبل", category: "متبل وخاص", badge: "فراخ متبلة جاهزة", price: 165, desc: "شرائح صدور متبلة بالتوابل، جاهزة للتحمير أو الطهي في دقائق.", img: "https://files.cdn-files-a.com/uploads/12658616/800_6afba5b91e6cd.jpg" },
+            { id: 10, name: "فراخ بيضة", category: "طيور كاملة", badge: "فراخ كاملة طازجة", price: 85, desc: "فرخة بيضة طازة، منظفة وجاهزة للطهي أو التقطيع زي ما تحب.", img: "https://files.cdn-files-a.com/uploads/12658616/800_6afba5baa2e0d.jpg" },
+            { id: 11, name: "فراخ منديل", category: "متبل وخاص", badge: "فراخ كاملة طازجة", price: 105, desc: "فرخة منديل مفروشة وجاهزة للشوي على الفحم.", img: "https://files.cdn-files-a.com/uploads/12658616/800_6afba5b6e32be.jpg" },
+            { id: 12, name: "فرخة بلدي جامبو", category: "طيور كاملة", badge: "فراخ كاملة طازجة", price: 135, desc: "فرخة بلدي كبيرة الحجم بمذاق غني وطبيعي، مثالية للعزائم.", img: "https://files.cdn-files-a.com/admin/system_photos_stock/800_697a31375d2ae.jpg" },
+            { id: 13, name: "كبد وقوانص", category: "مقطعات", badge: "كبد وقوانص", price: 120, desc: "كبد وقوانص منظفة كويس وجاهزة للطهي.", img: "https://files.cdn-files-a.com/uploads/12658616/800_6afba5b7bdb7d.jpg" },
+            { id: 14, name: "وراك", category: "مقطعات", badge: "أوراك وأجنحة", price: 110, desc: "وراك فراخ طازة، متقطعة وجاهزة للطهي.", img: "https://files.cdn-files-a.com/uploads/12658616/800_6afba5b97abcc.jpg" },
+            { id: 15, name: "أجنحة", category: "مقطعات", badge: "أوراك وأجنحة", price: 90, desc: "أجنحة فراخ منظفة، مثالية للشوي والتحمير.", img: "https://files.cdn-files-a.com/uploads/12658616/800_6afba5b7576e4.jpg" },
+            { id: 16, name: "وراك حمام كداب", category: "متبل وخاص", badge: "أوراك وأجنحة", price: 130, desc: "وراك حمام كداب متبلة ومجهزة على الطريقة اللي بتحبوها.", img: "https://files.cdn-files-a.com/uploads/12658616/800_6afba5b58f45d.jpg" },
+            { id: 17, name: "أرانب", category: "طيور كاملة", badge: "دواجن أخرى", price: 180, desc: "أرنب طازة منظف ومقطع وجاهز للطهي.", img: "https://files.cdn-files-a.com/uploads/12658616/800_6afba938e489e.jpg" },
+            { id: 18, name: "بط", category: "طيور كاملة", badge: "دواجن أخرى", price: 190, desc: "بط طازة منظف وجاهز للتحمير.", img: "https://files.cdn-files-a.com/uploads/12658616/800_6afba5b89b6c2.jpg" },
+            { id: 19, name: "حمام", category: "طيور كاملة", badge: "دواجن أخرى", price: 220, desc: "حمام بيتي طازة، مناسب للشوي والمحشي.", img: "https://files.cdn-files-a.com/uploads/12658616/800_6afba5b4694db.jpg" },
+            { id: 20, name: "شاورما بانيه", category: "متبل وخاص", badge: "بانيه وشيش", price: 210, desc: "بانيه مقطع شرائح رفيعة ومتبل جاهز للشاورما.", img: "https://files.cdn-files-a.com/uploads/12658616/800_6afba5b82bb47.jpg" }
+        ];
+
+        let cart = JSON.parse(localStorage.getItem('tuyourna_cart')) || [];
+
+        // Render Products
+        function renderProducts(category = 'الكل') {
+            const grid = document.getElementById('products-grid');
+            const filtered = category === 'الكل' ? products : products.filter(p => p.category === category);
+
+            grid.innerHTML = filtered.map(product => `
+                <div class="neon-card flex flex-col overflow-hidden rounded-[2rem]">
+                    <div class="aspect-[4/3] w-full overflow-hidden bg-[var(--surface-soft)]">
+                        <img alt="${product.name}" class="h-full w-full object-cover transition-transform duration-300 hover:scale-105" src="${product.img}" loading="lazy">
+                    </div>
+                    <div class="flex flex-1 flex-col p-5">
+                        <span class="mb-2 inline-flex w-fit items-center rounded-full bg-[var(--primary-color)]/15 px-3 py-1 text-xs font-bold text-[var(--primary-color)]">${product.badge}</span>
+                        <h3 class="text-lg font-bold">${product.name}</h3>
+                        <p class="mt-2 flex-1 text-sm text-[var(--text-muted)]">${product.desc}</p>
+                        <div class="price-tag mt-4 text-xl font-bold">
+                            ${product.price.toFixed(2)} ج.م <span class="text-sm font-normal text-[var(--text-muted)]">/ كجم</span>
+                        </div>
+                        <button type="button" onclick="addToCart(${product.id})" class="btn-neon mt-4 w-full text-sm">
+                            <i class="fa-solid fa-cart-plus"></i> أضف كيلو للسلة
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter Handler
+        function filterMenu(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.textContent.trim() === category) {
+                    btn.classList.add('bg-[var(--primary-color)]', 'text-[#0b0f17]');
+                    btn.classList.remove('bg-[var(--surface-soft)]', 'text-[var(--text-color)]');
+                } else {
+                    btn.classList.remove('bg-[var(--primary-color)]', 'text-[#0b0f17]');
+                    btn.classList.add('bg-[var(--surface-soft)]', 'text-[var(--text-color)]');
+                }
+            });
+            renderProducts(category);
+        }
+
+        // Cart Functions
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existing = cart.find(item => item.id === productId);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+            saveCart();
+            showToast(`تم إضافة كيلو ${product.name} للسلة`);
+        }
+
+        function updateQty(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (!item) return;
+            item.qty += delta;
+            if (item.qty <= 0) {
+                cart = cart.filter(i => i.id !== productId);
+            }
+            saveCart();
+            renderCartItems();
+        }
+
+        function saveCart() {
+            localStorage.setItem('tuyourna_cart', JSON.stringify(cart));
+            updateCartBadges();
+        }
+
+        function updateCartBadges() {
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            const badges = [document.getElementById('cart-badge-desktop'), document.getElementById('cart-badge-mobile')];
+            const floatingBtn = document.getElementById('floating-cart-btn');
+            const floatingCount = document.getElementById('floating-cart-count');
+
+            badges.forEach(badge => {
+                if (totalQty > 0) {
+                    badge.textContent = totalQty;
+                    badge.classList.remove('hidden');
+                } else {
+                    badge.classList.add('hidden');
+                }
+            });
+
+            if (totalQty > 0) {
+                floatingCount.textContent = totalQty;
+                floatingBtn.classList.remove('hidden');
+            } else {
+                floatingBtn.classList.add('hidden');
+            }
+        }
+
+        function renderCartItems() {
+            const container = document.getElementById('cart-items-container');
+            const totalEl = document.getElementById('cart-total-price');
+
+            if (cart.length === 0) {
+                container.innerHTML = `<p class="py-8 text-center text-[var(--text-muted)]">السلة فاضية حالياً.. اختر منتجاتك من المنيو!</p>`;
+                totalEl.textContent = '0 ج.م';
+                return;
+            }
+
+            let total = 0;
+            container.innerHTML = cart.map(item => {
+                const itemTotal = item.price * item.qty;
+                total += itemTotal;
+                return `
+                    <div class="flex items-center justify-between rounded-2xl bg-[var(--surface-soft)] p-3">
+                        <div>
+                            <div class="font-bold">${item.name}</div>
+                            <div class="text-xs text-[var(--text-muted)]">${item.price} ج.م × ${item.qty} كجم = <span class="text-[var(--secondary-color)] font-bold">${itemTotal} ج.م</span></div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="updateQty(${item.id}, -1)" class="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 font-bold hover:bg-red-500/30">-</button>
+                            <span class="w-6 text-center text-sm font-bold">${item.qty}</span>
+                            <button type="button" onclick="updateQty(${item.id}, 1)" class="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 font-bold hover:bg-green-500/30">+</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            totalEl.textContent = `${total.toFixed(2)} ج.م`;
+        }
+
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden')) {
+                renderCartItems();
+            }
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 2500);
+        }
+
+        function sendOrderToWhatsApp() {
+            if (cart.length === 0) {
+                alert('من فضلك أضف أصناف للسلة أولاً!');
+                return;
+            }
+            const name = document.getElementById('customer-name').value.trim();
+            const address = document.getElementById('customer-address').value.trim();
+
+            if (!name || !address) {
+                alert('من فضلك اكتب الاسم والعنوان عشان نوصلك الطلب!');
+                return;
+            }
+
+            let message = `*طلب جديد من موقع طيورنا 🐔*\n`;
+            message += `👤 *الاسم:* ${name}\n`;
+            message += `📍 *العنوان:* ${address}\n\n`;
+            message += `🛒 *الطلبات:*\n`;
+
+            let total = 0;
+            cart.forEach(item => {
+                const sub = item.price * item.qty;
+                total += sub;
+                message += `- ${item.name}: ${item.qty} كجم (${sub} ج.م)\n`;
+            });
+
+            message += `\n💰 *الإجمالي الاسترشادي:* ${total} ج.م (+ مصاريف التوصيل حسب المنطقة)\n`;
+            message += `_(الأسعار تؤكد حسب البورصة اليومية)_`;
+
+            const phone = '201214334611';
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        // Interactive Star Rating & Review Submission
+        const starBtns = document.querySelectorAll('.star-btn');
+        const ratingInput = document.getElementById('reviewRating');
+
+        starBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const val = parseInt(btn.dataset.value);
+                ratingInput.value = val;
+                starBtns.forEach((b, idx) => {
+                    const icon = b.querySelector('i');
+                    if (idx < val) {
+                        icon.classList.remove('fa-regular');
+                        icon.classList.add('fa-solid');
+                    } else {
+                        icon.classList.remove('fa-solid');
+                        icon.classList.add('fa-regular');
+                    }
+                });
+            });
+        });
+
+        document.getElementById('review-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const rating = parseInt(ratingInput.value);
+            const name = document.getElementById('reviewName').value.trim();
+            const city = document.getElementById('reviewCity').value.trim() || 'الإسكندرية';
+            const text = document.getElementById('reviewText').value.trim();
+
+            let starsHtml = '';
+            for (let i = 1; i <= 5; i++) {
+                starsHtml += i <= rating ? '<i class="fa-solid fa-star"></i>' : '<i class="fa-regular fa-star"></i>';
+            }
+
+            const newCard = `
+                <figure class="neon-card flex flex-col rounded-[2rem] p-6 sm:p-7">
+                    <div class="flex text-[var(--accent-color)]">${starsHtml}</div>
+                    <blockquote class="mt-4 flex-1 leading-relaxed text-[var(--text-muted)]">${text}</blockquote>
+                    <figcaption class="mt-5">
+                        <div class="font-bold">${name}</div>
+                        <div class="text-sm text-[var(--text-muted)]">${city}</div>
+                    </figcaption>
+                </figure>
+            `;
+
+            document.getElementById('reviews-grid').insertAdjacentHTML('afterbegin', newCard);
+            this.reset();
+            ratingInput.value = 5;
+            showToast('شكراً لتقييمك! تم نشر رأيك بنجاح.');
+        });
+
+        // Initialize on load
+        renderProducts();
+        updateCartBadges();
+    </script>
+</body>
+</html>

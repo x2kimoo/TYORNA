@@ -1,0 +1,21 @@
+/* Explain: Theme design tokens for colors, fonts, and spacing, updated with neon-inspired colors. */
+:root {
+    /* لوحة نيون مستوحاة من شعار طيورنا: ذهبي، برتقالي العرف، أخضر الورق */
+    --background-color: #05100C;
+    --surface-color: #0A1B15;
+    --surface-soft: #102A21;
+    --primary-color: #FFD166;
+    --primary-hover: #FFE29B;
+    --secondary-color: #6EF0A2;
+    --accent-color: #FF7A2F;
+    --accent-hover: #FF9C63;
+    --text-color: #F2F8F3;
+    --text-muted: #A6BDB1;
+    --border-color: #1E3C31;
+    --glow-gold: 0 0 10px rgba(255, 209, 102, 0.5), 0 0 30px rgba(255, 209, 102, 0.22);
+    --glow-orange: 0 0 10px rgba(255, 122, 47, 0.5), 0 0 30px rgba(255, 122, 47, 0.2);
+    --glow-green: 0 0 10px rgba(110, 240, 162, 0.45), 0 0 28px rgba(110, 240, 162, 0.18);
+    --font-heading: 'Cairo', sans-serif;
+    --font-body: 'Tajawal', sans-serif;
+    --logo-url: url('https://files.cdn-files-a.com/uploads/12658616/normal_6afb9955a96c4.jpg?ratio=3:2&format=avif');
+}
